@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 import neptune
 import json
+import os
 
 classes = [
     "Arabic",
@@ -37,11 +38,14 @@ def predict_pipeline(text):
 
     pred = model.predict([text])
 
-    print(env.PROVA)
+    print(os.env.PROVA)
 
     # Neptune
-    with open(f"{__DIR__}/neptune.json", "r") as f:
+    # with open(f"{__DIR__}/neptune.json", "r") as f:
+    with open(f"/etc/secrets/neptune.json", "r"):
         neptune_data = json.load(f)
+    
+    print(neptune_data)
 
     run = neptune.init_run(
         project   = neptune_data["project"],
