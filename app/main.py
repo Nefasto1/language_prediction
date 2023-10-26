@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from pydantic import BaseModel
+
 from .model.model import __version__
 from .model.model import predict_pipeline
 
@@ -14,7 +16,7 @@ app.add_middleware(
     allow_headers     = ["*"],
 )
 
-class Item():
+class Item(BaseModel):
     text: str
 
 @app.get('/')
