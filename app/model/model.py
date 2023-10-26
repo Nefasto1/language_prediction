@@ -38,18 +38,14 @@ def predict_pipeline(text):
 
     pred = model.predict([text])
 
-    print(os.getenv("PROVA"))
-
     # Neptune
     # with open(f"{__DIR__}/neptune.json", "r") as f:
-    with open(f"/etc/secrets/neptune.json", "r") as f:
-        neptune_data = json.load(f)
-    
-    print(neptune_data)
+    # with open(f"/etc/secrets/neptune.json", "r") as f:
+    #     neptune_data = json.load(f)
 
     run = neptune.init_run(
-        project   = neptune_data["project"],
-        api_token = neptune_data["api_token"]
+        project   = os.getenv("PROJECT"),
+        api_token = os.getenv("API_TOKEN")
     )
 
     run["text"] = text
