@@ -42,7 +42,7 @@ def predict_pipeline(text):
 
     # Neptune
     # with open(f"{__DIR__}/neptune.json", "r") as f:
-    with open(f"/etc/secrets/neptune.json", "r"):
+    with open(f"/etc/secrets/neptune.json", "r") as f:
         neptune_data = json.load(f)
     
     print(neptune_data)
