@@ -38,7 +38,7 @@ def predict_pipeline(text):
 
     pred = model.predict([text])
 
-    print(os.env.PROVA)
+    print(os.getenv().PROVA)
 
     # Neptune
     # with open(f"{__DIR__}/neptune.json", "r") as f:
