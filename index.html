@@ -19,7 +19,7 @@
             document.getElementById("button").addEventListener("click", function() {
                 text = document.getElementById("string");
 
-                fetch("https://language-prediction-vx2j.onrender.com", {
+                fetch("https://language-prediction-vx2j.onrender.com/predict", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
