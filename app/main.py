@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from model.model import __version__
-from model.model import predict_pipeline
+from .model.model import __version__
+from .model.model import predict_pipeline
 
 app = FastAPI()
 
