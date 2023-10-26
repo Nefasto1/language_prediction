@@ -1,6 +1,7 @@
 import pickle
 import re
 from pathlib import Path
+import neptune
 
 classes = [
     "Arabic",
@@ -36,5 +37,14 @@ def predict_pipeline(text):
     pred = model.predict([text])
 
     # Neptune
+    run = neptune.init_run(
+        project="stefano-tumino/Language-Prediction",
+        api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIxOTkzZTMwZS1jOTZmLTQzOTYtYTYxYS0xZTQ0OTJmMTcxY2IifQ==",
+    )
+
+    run["text"] = text
+    run["prediction"] = pred
+    
+    run.stop()
 
     return classes[pred[0]]
