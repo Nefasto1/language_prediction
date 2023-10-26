@@ -30,7 +30,7 @@
                 .then(response => {
                       console.log(response);
                       const result = document.getElementById("language");
-                      result.innerHTML = "Language: " + response;
+                      result.innerHTML = "Language: " + response["text_language"];
                     })
                 .catch(error => {
                       console.log(response);
