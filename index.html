@@ -19,12 +19,16 @@
             document.getElementById("button").addEventListener("click", function() {
                 text = document.getElementById("string");
 
+                const data = {
+                    text
+                };
+
                 fetch("https://language-prediction-vx2j.onrender.com/predict", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(text)
+                    body: JSON.stringify(data)
                 })
                 .then(response => response.json())
                 .then(response => {
@@ -33,7 +37,7 @@
                       result.innerHTML = "Language: " + response["text_language"];
                     })
                 .catch(error => {
-                      console.log(response);
+                      console.log(error);
                       const result = document.getElementById("language");
                       result.innerHTML = "error";
                     })
